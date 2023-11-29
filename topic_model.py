@@ -147,12 +147,23 @@ lda_model = gensim.models.ldamodel.LdaModel(corpus=corpus,
 
 # Print the Keyword in the 10 topics
 pprint(lda_model.print_topics())
-doc_lda = lda_model[corpus]
 
+# outputs
+# route pretty print topics to txt
+from pprint import pprint
+with open('output.txt', 'wt') as out:
+    pprint(lda_model.print_topics(), stream=out)
+
+# export model
+lda_model.save('lda.model')
+
+# load exported model
+# lda_model = models.LDAModel.load('lda.model')
+'''
 # Compute Perplexity
 print('\nPerplexity: ', lda_model.log_perplexity(corpus))  # a measure of how good the model is. lower the better.
 
 # Compute Coherence Score
 coherence_model_lda = CoherenceModel(model=lda_model, texts=data_lemmatized, dictionary=id2word, coherence='c_v')
 coherence_lda = coherence_model_lda.get_coherence()
-print('\nCoherence Score: ', coherence_lda)
+print('\nCoherence Score: ', coherence_lda)'''
