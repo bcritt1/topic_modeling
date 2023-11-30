@@ -151,11 +151,11 @@ pprint(lda_model.print_topics())
 # outputs
 # route pretty print topics to txt
 from pprint import pprint
-with open('output.txt', 'wt') as out:
+with open('/scratch/users/{}/outputs/output.txt'.format(user), 'wt') as out:
     pprint(lda_model.print_topics(), stream=out)
 
 # export model
-lda_model.save('lda.model')
+lda_model.save('/scratch/users/{}/outputs/lda.model'.format(user))
 
 # load exported model
 # lda_model = models.LDAModel.load('lda.model')
